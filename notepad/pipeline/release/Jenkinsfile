@@ -39,7 +39,8 @@ podTemplate(label: 'release', serviceAccount: 'jenkins',
           cat /root/.ssh/known_hosts
           ls -al /root/.ssh/known_hosts
           whoami
-          git clone git@github.com:volanscoe/notepad.git
+          # git clone git@github.com:volanscoe/notepad.git
+          git clone https://github.com/volanscoe/notepad.git
           cd notepad
           git config --global user.email "jenkins@jorgeacetozi.com"
           git config --global user.name "Jenkins"
