@@ -33,13 +33,13 @@ podTemplate(label: 'release', serviceAccount: 'jenkins',
           mkdir -p /root/.ssh
           ls -al /home/jenkins
           ls -al /home/jenkins/.ssh
-          cp /home/jenkins/.ssh/id_rsa /root/.ssh/id_rsa
-          chmod 400 /root/.ssh/id_rsa
-          ssh-keyscan -t rsa github.com >> /root/.ssh/known_hosts
+          cp /home/jenkins/.ssh/id_ed25519 /root/.ssh/id_ed25519
+          chmod 400 /root/.ssh/id_ed25519
+          ssh-keyscan -t ed25519 github.com >> /root/.ssh/known_hosts
           cat /root/.ssh/known_hosts
           ls -al /root/.ssh/known_hosts
           whoami
-          git clone git@github.com:volansamerica/notepad.git
+          git clone git@github.com:volanscoe/notepad.git
           cd notepad
           git config --global user.email "jenkins@jorgeacetozi.com"
           git config --global user.name "Jenkins"
