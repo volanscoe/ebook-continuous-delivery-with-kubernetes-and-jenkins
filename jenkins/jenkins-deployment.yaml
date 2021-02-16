@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jenkins-deployment
+  labels:
+    app: jenkins
+    role: master
+spec:
+  selector:
+    matchLabels:
+      app: jenkins
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: jenkins
+        role: master
+    spec:
+      containers:
+      - name: jenkins
+        image: jenkins/jenkins:lts
+        ports:
+        - name: http-port
+          containerPort: 8080
+        - name: jnlp-port
+          containerPort: 50000
+        volumeMounts:
+        - name: jenkins-volume
+          mountPath: /var/jenkins_home
+        - name: github-private-key-volume
+          mountPath: /var/jenkins_home/.ssh
+          readOnly: true
+      volumes:
+      - name: jenkins-volume
+        emptyDir: {}
+      - name: github-private-key-volume
+        secret:
+          secretName: github-priviate-key-secret
