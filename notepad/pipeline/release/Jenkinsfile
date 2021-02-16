@@ -44,7 +44,7 @@ podTemplate(label: 'release', serviceAccount: 'jenkins',
           cd notepad
           git config --global user.email "jenkins@jorgeacetozi.com"
           git config --global user.name "Jenkins"
-          mvn -B -s /etc/maven/settings.xml release:prepare "-DreleaseVersion=${RELEASE_VERSION}" "-DdevelopmentVersion=${NEW_VERSION}" release:perform -Darguments="-DskipTests"
+          mvn -B -s /etc/maven/settings.xml release:prepare "-DreleaseVersion=${RELEASE_VERSION}" "-DdevelopmentVersion=${NEW_VERSION}" release:perform -Darguments="-DskipTests -Dusername=saurabh.saxena@volansamerica.com -Dpassword=i^rx0nJ4WHu!"
         """
       }
     }
