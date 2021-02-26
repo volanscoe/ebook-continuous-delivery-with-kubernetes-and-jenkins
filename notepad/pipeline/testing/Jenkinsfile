@@ -47,7 +47,7 @@ podTemplate(label: 'testing', serviceAccount: 'jenkins',
     stage('Destroy the Testing environment if it exists') {
       container('kubectl') {
         sh 'kubectl delete all -l env=testing'
-        sh 'kubectl get pods'
+        sh 'kubectl get pods' 
         sh 'kubectl version'
       }
     }
@@ -55,7 +55,7 @@ podTemplate(label: 'testing', serviceAccount: 'jenkins',
     stage('Start a new Testing environment') {
       container('kubectl') {
         sh """
-          sed -i "s/NOTEPAD_CONTAINER_IMAGE/${DOCKERHUB_USERNAME}\\/${image_name}:${GIT_BRANCH}/" ./notepad/k8s/testing/notepad-testing-deployment.yaml
+          #sed -i "s/NOTEPAD_CONTAINER_IMAGE/${DOCKERHUB_USERNAME}\\/${image_name}:${GIT_BRANCH}/" ./notepad/k8s/testing/notepad-testing-deployment.yaml
 
           echo "TEST"
 
